@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 3.2)
-project(divider)
+# Create a library from the source files
+add_library(CPPYouTube2MP3 STATIC
+    CPPYouTube2MP3.cpp
+)
 
-add_subdirectory(division)
-set(SOURCE_FILES main.cpp)
+# Specify include directories for the library
+target_include_directories(CPPYouTube2MP3 PUBLIC ../include)
 
-add_executable(divider ${SOURCE_FILES})
-target_link_libraries(divider division)
-install(TARGETS divider DESTINATION ${DIVISIBLE_INSTALL_BIN_DIR})
+# If the library is public (can be used by other projects)
+# Export it for use in other projects
+export(TARGETS CPPYouTube2MP3 FILE CPPYouTube2MP3Targets.cmake)
